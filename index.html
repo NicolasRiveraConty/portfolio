@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nicolas Rivera | Sites profissionais para restaurantes</title>
+<meta name="description" content="Portfólio de Nicolas Rivera: sites profissionais para restaurantes, pizzarias, hamburguerias, cafés e bistrôs, pensados para aumentar as vendas. Veja cinco projetos conceito.">
+<meta name="theme-color" content="#0E0E10">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nicolas Rivera | Sites profissionais para restaurantes">
+<meta property="og:description" content="Sites bonitos, rápidos e pensados para gerar mais pedidos. Veja cinco projetos conceito.">
+<meta property="og:image" content="pizzaria.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E0E10; --bg2:#151518; --card:#1A1A1E; --linha:rgba(255,255,255,.1);
+  --texto:#F4F1EA; --suave:#A9A69E; --acento:#E9B65C; --acento2:#D9552B;
+  --f-titulo:'Fraunces',Georgia,serif; --f-corpo:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f-corpo);background:var(--bg);color:var(--texto);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-titulo);line-height:1.1;font-weight:600;letter-spacing:-.015em}
+.container{width:min(1180px,100% - 40px);margin-inline:auto}
+section{padding:104px 0}
+.eyebrow{display:inline-block;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:16px}
+.titulo-secao{font-size:clamp(2rem,4.4vw,3.1rem);margin-bottom:16px;text-wrap:balance}
+.sub{color:var(--suave);max-width:640px;font-size:1.05rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:600;font-size:1rem;border:1.5px solid transparent;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,color .25s,border-color .25s;font-family:var(--f-corpo)}
+.btn:hover{transform:translateY(-3px)}
+.btn-primario{background:var(--acento);color:#1a1205;box-shadow:0 14px 34px -14px var(--acento)}
+.btn-primario:hover{box-shadow:0 20px 40px -14px var(--acento)}
+.btn-borda{border-color:rgba(255,255,255,.35);color:var(--texto);background:rgba(255,255,255,.04)}
+.btn-borda:hover{background:var(--texto);color:#111}
+.btn svg{width:20px;height:20px;fill:currentColor;flex:none}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 0;transition:padding .3s}
+header::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s;background:rgba(14,14,16,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--linha)}
+header.rolou{padding:11px 0}header.rolou::before{opacity:1}
+header .container{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.marca{white-space:nowrap;font-family:var(--f-titulo);font-weight:600;font-size:1.3rem;display:flex;align-items:center;gap:10px}
+.marca i{width:34px;height:34px;border-radius:10px;background:var(--acento);color:#1a1205;display:grid;place-items:center;font-style:normal;font-size:.95rem;font-weight:700}
+nav{display:flex;align-items:center;gap:30px}
+nav a:not(.btn){font-size:.95rem;color:var(--suave);transition:color .2s}
+nav a:not(.btn):hover{color:var(--texto)}
+nav .btn{padding:10px 20px;font-size:.9rem}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:140px 0 90px;position:relative;overflow:hidden;
+  background:radial-gradient(900px 520px at 85% 15%,rgba(233,182,92,.16),transparent 60%),radial-gradient(700px 480px at 5% 95%,rgba(217,85,43,.14),transparent 60%),var(--bg)}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--linha) 1px,transparent 1px),linear-gradient(90deg,var(--linha) 1px,transparent 1px);background-size:72px 72px;opacity:.12;mask-image:radial-gradient(ellipse at 70% 30%,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000,transparent 70%);pointer-events:none}
+.hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.selo{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--linha);border-radius:999px;font-size:.82rem;color:var(--suave);background:rgba(255,255,255,.04);margin-bottom:26px}
+.selo b{width:8px;height:8px;border-radius:50%;background:var(--acento);box-shadow:0 0 0 4px rgba(233,182,92,.2)}
+.hero h1{font-size:clamp(2.6rem,6.2vw,4.9rem);margin-bottom:24px;text-wrap:balance}
+.hero h1 em{font-style:italic;color:var(--acento);font-weight:500}
+.hero .lead{font-size:clamp(1.05rem,1.8vw,1.22rem);color:var(--suave);max-width:560px;margin-bottom:38px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero-nota{margin-top:30px;font-size:.88rem;color:var(--suave)}
+.pilha{position:relative;height:520px}
+.pilha a{position:absolute;width:62%;border-radius:18px;overflow:hidden;border:1px solid var(--linha);box-shadow:0 30px 60px -24px rgba(0,0,0,.8);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.pilha img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.pilha a:nth-child(1){top:0;left:0;transform:rotate(-4deg)}
+.pilha a:nth-child(2){top:90px;right:0;transform:rotate(3deg);z-index:2}
+.pilha a:nth-child(3){bottom:0;left:12%;transform:rotate(-1.5deg);z-index:3}
+.pilha a:hover{transform:rotate(0) scale(1.04);z-index:5}
+
+/* projetos */
+#projetos{background:var(--bg2)}
+.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:54px}
+.aviso{border:1px solid var(--linha);border-radius:14px;padding:14px 18px;font-size:.88rem;color:var(--suave);max-width:380px;background:rgba(255,255,255,.03)}
+.aviso b{color:var(--acento)}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:24px}
+.card{grid-column:span 2;background:var(--card);border:1px solid var(--linha);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s,border-color .35s,box-shadow .35s}
+.card:nth-child(1),.card:nth-child(2){grid-column:span 3}
+.card:hover{transform:translateY(-8px);border-color:rgba(233,182,92,.5);box-shadow:0 30px 60px -28px rgba(0,0,0,.9)}
+.capa{position:relative;overflow:hidden;background:#222}
+.capa img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;transition:transform .8s}
+.card:hover .capa img{transform:scale(1.05)}
+.badge{position:absolute;top:14px;left:14px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:999px;background:rgba(14,14,16,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);color:var(--acento)}
+.corpo{padding:24px 26px 28px;display:flex;flex-direction:column;gap:10px;flex:1}
+.tipo{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--suave);font-weight:600}
+.card h3{font-size:1.6rem}
+.card p{color:var(--suave);font-size:.97rem;flex:1}
+.paleta{display:flex;gap:6px;margin-top:4px}
+.paleta i{width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+.ver{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-weight:600;color:var(--acento)}
+.ver::after{content:"→";transition:transform .25s}
+.card:hover .ver::after{transform:translateX(6px)}
+
+/* como funciona */
+.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:54px;counter-reset:p}
+.passo{position:relative;padding:34px 26px 30px;border:1px solid var(--linha);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.04),transparent)}
+.passo .n{font-family:var(--f-titulo);font-size:3.4rem;line-height:1;color:var(--acento);opacity:.9;display:block;margin-bottom:14px}
+.passo h3{font-size:1.3rem;margin-bottom:10px}
+.passo p{color:var(--suave);font-size:.96rem}
+
+/* benefícios */
+#recursos{background:var(--bg2)}
+.recursos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.rec{padding:28px;border:1px solid var(--linha);border-radius:18px;background:var(--card)}
+.rec .ic{width:46px;height:46px;border-radius:14px;background:rgba(233,182,92,.14);display:grid;place-items:center;font-size:1.3rem;margin-bottom:16px}
+.rec h3{font-size:1.2rem;margin-bottom:8px}
+.rec p{color:var(--suave);font-size:.95rem}
+
+/* contato */
+.contato{text-align:center;position:relative;overflow:hidden;background:radial-gradient(700px 360px at 50% 0,rgba(233,182,92,.18),transparent 70%),var(--bg)}
+.contato .sub{margin:0 auto 34px}
+.contato .hero-cta{justify-content:center}
+
+footer{border-top:1px solid var(--linha);padding:36px 0 44px;font-size:.9rem;color:var(--suave)}
+footer .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer a:hover{color:var(--texto)}
+.rodape-nota{width:100%;font-size:.8rem;opacity:.75}
+
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .reveal.vis{opacity:1;transform:none}
+
+@media (max-width:980px){
+  section{padding:76px 0}
+  .hero .container{grid-template-columns:1fr;gap:40px}
+  .pilha{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .pilha a{position:static;width:100%;transform:none!important}
+  .pilha a:nth-child(3){display:none}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .card,.card:nth-child(1),.card:nth-child(2){grid-column:span 1}
+  .card:nth-child(5){grid-column:span 2}
+  .passos{grid-template-columns:repeat(2,1fr)}
+  .recursos{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  nav a:not(.btn){display:none}
+  .marca{font-size:1.05rem}
+  nav .btn{padding:9px 15px;font-size:.82rem;white-space:nowrap}
+  .hero{padding:118px 0 70px}
+  .hero-cta .btn{flex:1 1 100%}
+  .pilha{display:none}
+  .grid{grid-template-columns:1fr}
+  .card:nth-child(5){grid-column:span 1}
+  .passos{grid-template-columns:1fr}
+  .cab{margin-bottom:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .card,.card .capa img,.btn,.pilha a{transition:none}
+}
+</style>
+</head>
+<body>
+<header id="topo">
+  <div class="container">
+    <a href="#inicio" class="marca"><i>NR</i>Nicolas Rivera</a>
+    <nav>
+      <a href="#projetos">Projetos</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#contato">Contato</a>
+      <a class="btn btn-primario" href="https://instagram.com/onicolasrivera" target="_blank" rel="noopener">Falar no Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container">
+    <div>
+      <span class="selo reveal"><b></b>Nicolas Rivera · Web design para restaurantes</span>
+      <h1 class="reveal" style="--d:.08s">Sites profissionais para <em>restaurantes</em></h1>
+      <p class="lead reveal" style="--d:.16s">Um site bonito, rápido e feito para vender: cardápio claro, botão de WhatsApp e iFood, mapa e visual que passa confiança. Tudo pensado para ajudar o seu restaurante a aumentar as vendas.</p>
+      <div class="hero-cta reveal" style="--d:.24s">
+        <a class="btn btn-primario" href="#projetos">Ver projetos</a>
+        <a class="btn btn-borda" href="https://instagram.com/onicolasrivera" target="_blank" rel="noopener">Pedir minha demo grátis</a>
+      </div>
+      <p class="hero-nota reveal" style="--d:.32s">Os cinco projetos abaixo são <b>projetos conceito</b>, com restaurantes fictícios.</p>
+    </div>
+    <div class="pilha reveal" style="--d:.2s" aria-hidden="true">
+      <a href="hamburgueria.html" tabindex="-1"><img src="hamburgueria.jpg" alt="" loading="lazy"></a>
+      <a href="japones.html" tabindex="-1"><img src="japones.jpg" alt="" loading="lazy"></a>
+      <a href="pizzaria.html" tabindex="-1"><img src="pizzaria.jpg" alt="" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="container">
+    <div class="cab">
+      <div class="reveal">
+        <span class="eyebrow">Portfólio</span>
+        <h2 class="titulo-secao">Projetos conceito</h2>
+        <p class="sub">Cinco estilos, cinco tipos de restaurante. Cada site tem identidade visual própria, cardápio, galeria, mapa e botões de pedido. Clique para navegar.</p>
+      </div>
+      <div class="aviso reveal"><b>Projetos conceito:</b> restaurantes fictícios criados para demonstrar o meu trabalho. Nomes, endereços, preços e contatos não são reais.</div>
+    </div>
+
+    <div class="grid">
+      <a class="card reveal" href="pizzaria.html">
+        <div class="capa"><img src="pizzaria.jpg" alt="Site da Massa Viva Pizzaria, projeto conceito" width="1200" height="750" loading="lazy"><span class="badge">Projeto conceito</span></div>
+        <div class="corpo"><span class="tipo">Pizzaria artesanal</span><h3>Massa Viva Pizzaria</h3>
+          <p>Visual retrô de letreiro, com creme, vermelho-tomate e verde-manjericão. Cardápio por categorias e pedido por iFood ou WhatsApp.</p>
+          <div class="paleta"><i style="background:#D7261E"></i><i style="background:#F4E9D8"></i><i style="background:#2E5E3A"></i><i style="background:#F2B632"></i></div>
+          <span class="ver">Ver projeto</span></div>
+      </a>
+      <a class="card reveal" style="--d:.08s" href="hamburgueria.html">
+        <div class="capa"><img src="hamburgueria.jpg" alt="Site do Bruto Burger Co., projeto conceito" width="1200" height="750" loading="lazy"><span class="badge">Projeto conceito</span></div>
+        <div class="corpo"><span class="tipo">Hamburgueria</span><h3>Bruto Burger Co.</h3>
+          <p>Fundo preto, títulos gigantes em caixa-alta e destaque em amarelo e vermelho. Tom direto e descontraído, feito para dar fome.</p>
+          <div class="paleta"><i style="background:#0B0B0B"></i><i style="background:#E4262B"></i><i style="background:#FFC20E"></i><i style="background:#F5F2EA"></i></div>
+          <span class="ver">Ver projeto</span></div>
+      </a>
+      <a class="card reveal" href="japones.html">
+        <div class="capa"><img src="japones.jpg" alt="Site do Kaori Sushi Bar, projeto conceito" width="1200" height="750" loading="lazy"><span class="badge">Projeto conceito</span></div>
+        <div class="corpo"><span class="tipo">Restaurante japonês</span><h3>Kaori Sushi Bar</h3>
+          <p>Minimalista, com tons de papel, índigo e vermelhão. Tipografia serifada fina, muito respiro e foco na fotografia dos pratos.</p>
+          <div class="paleta"><i style="background:#F4F1EA"></i><i style="background:#1F2A44"></i><i style="background:#C2372C"></i><i style="background:#E9CC96"></i></div>
+          <span class="ver">Ver projeto</span></div>
+      </a>
+      <a class="card reveal" style="--d:.08s" href="cafe.html">
+        <div class="capa"><img src="cafe.jpg" alt="Site da Pão &amp; Prosa Padaria Café, projeto conceito" width="1200" height="750" loading="lazy"><span class="badge">Projeto conceito</span></div>
+        <div class="corpo"><span class="tipo">Padaria e café</span><h3>Pão &amp; Prosa Padaria Café</h3>
+          <p>Amarelo-manteiga, bordô e marrom-café, com cantos bem arredondados. Visual acolhedor, ideal para padaria de bairro.</p>
+          <div class="paleta"><i style="background:#FDF0BE"></i><i style="background:#7A1F2B"></i><i style="background:#3B2417"></i><i style="background:#C96F3B"></i></div>
+          <span class="ver">Ver projeto</span></div>
+      </a>
+      <a class="card reveal" style="--d:.16s" href="bistro.html">
+        <div class="capa"><img src="bistro.jpg" alt="Site do Lume Grill &amp; Bistrô, projeto conceito" width="1200" height="750" loading="lazy"><span class="badge">Projeto conceito</span></div>
+        <div class="corpo"><span class="tipo">Churrascaria e bistrô</span><h3>Lume Grill &amp; Bistrô</h3>
+          <p>Verde-floresta profundo com dourado e títulos em caixa-alta espaçada. Sofisticado, com botão de reserva pelo WhatsApp.</p>
+          <div class="paleta"><i style="background:#0E1B15"></i><i style="background:#C9A45C"></i><i style="background:#7C1F2C"></i><i style="background:#F2EBDD"></i></div>
+          <span class="ver">Ver projeto</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Passo a passo</span>
+      <h2 class="titulo-secao">Como funciona</h2>
+      <p class="sub">Um processo simples, sem burocracia, para o seu restaurante ter um site profissional no ar.</p>
+    </div>
+    <div class="passos">
+      <div class="passo reveal"><span class="n">1</span><h3>Demo grátis personalizada</h3><p>Eu monto uma demonstração com o nome, as cores e o cardápio do seu restaurante, para você ver como fica antes de decidir.</p></div>
+      <div class="passo reveal" style="--d:.08s"><span class="n">2</span><h3>Ajustes</h3><p>Você me diz o que quer mudar: textos, fotos, itens e botões. Ajustamos até ficar do jeito que você imaginou.</p></div>
+      <div class="passo reveal" style="--d:.16s"><span class="n">3</span><h3>Publicação com domínio</h3><p>O site vai ao ar com o endereço do seu restaurante na internet, pronto para ser divulgado nas redes e no Google.</p></div>
+      <div class="passo reveal" style="--d:.24s"><span class="n">4</span><h3>Manutenção mensal</h3><p>Cuido das atualizações de cardápio, preços e horários para o seu site ficar sempre em dia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="recursos">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">O que está nos sites</span>
+      <h2 class="titulo-secao">Pensado para o cliente pedir mais fácil</h2>
+    </div>
+    <div class="recursos">
+      <div class="rec reveal"><div class="ic">📱</div><h3>Feito para o celular</h3><p>A maioria dos clientes acessa pelo telefone. Os sites são responsivos e rápidos de abrir.</p></div>
+      <div class="rec reveal" style="--d:.08s"><div class="ic">💬</div><h3>Pedido em um toque</h3><p>Botões de WhatsApp e, quando faz sentido, de iFood, sempre visíveis durante a navegação.</p></div>
+      <div class="rec reveal" style="--d:.16s"><div class="ic">🍽️</div><h3>Cardápio claro</h3><p>Categorias, fotos e preços organizados para o cliente decidir rápido e pedir com confiança.</p></div>
+      <div class="rec reveal"><div class="ic">📍</div><h3>Mapa e horários</h3><p>Endereço, horário de funcionamento e botão do Google Maps para o cliente chegar sem dúvidas.</p></div>
+      <div class="rec reveal" style="--d:.08s"><div class="ic">🔎</div><h3>Pronto para o Google</h3><p>Estrutura pensada para buscadores, com título, descrição e dados do restaurante.</p></div>
+      <div class="rec reveal" style="--d:.16s"><div class="ic">🎨</div><h3>Identidade própria</h3><p>Cores, fontes e tom de voz de acordo com o estilo de cada restaurante, sem cara de modelo pronto.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contato" id="contato">
+  <div class="container reveal">
+    <span class="eyebrow">Contato</span>
+    <h2 class="titulo-secao">Quer uma demo para o seu restaurante?</h2>
+    <p class="sub">Me chame no Instagram e conte um pouco sobre o seu restaurante. A demonstração é grátis e sem compromisso.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primario" href="https://instagram.com/onicolasrivera" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zM17.1 6.1a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 2.8c-2.5 0-2.8 0-3.8.1-2.6.1-4 1.5-4.1 4.1C4 8 4 8.300 4 12s0 4 .1 4.900c.1 2.600 1.500 4 4.100 4.100 1 .1 1.300.1 3.800.1s2.800 0 3.800-.1c2.600-.1 4-1.500 4.100-4.100.1-1 .1-1.300.1-3.800s0-2.800-.1-3.800c-.1-2.600-1.500-4-4.100-4.100-1-.1-1.300-.1-3.800-.1zm0 1.700c2.500 0 2.800 0 3.700.1 1.900.1 2.800 1 2.900 2.900.1 1 .1 1.200.1 3.700s0 2.800-.1 3.700c-.1 1.900-1 2.800-2.900 2.900-1 .1-1.200.1-3.700.1s-2.800 0-3.700-.1c-1.900-.1-2.800-1-2.900-2.900-.1-1-.1-1.200-.1-3.700s0-2.800.1-3.700c.1-1.900 1-2.800 2.900-2.900.9-.1 1.200-.1 3.700-.1z"/></svg>
+        @onicolasrivera no Instagram</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© <span id="ano">2026</span> Nicolas Rivera · Sites profissionais para restaurantes</div>
+    <div><a href="https://instagram.com/onicolasrivera" target="_blank" rel="noopener">Instagram</a></div>
+    <div class="rodape-nota">Os cinco projetos exibidos são projetos conceito, com restaurantes fictícios. Fotos ilustrativas (Unsplash).</div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var topo=document.getElementById('topo');
+  function s(){topo.classList.toggle('rolou',window.scrollY>30)}
+  window.addEventListener('scroll',s,{passive:true});s();
+  document.getElementById('ano').textContent=new Date().getFullYear();
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+    els.forEach(function(e){io.observe(e)});
+  }else{els.forEach(function(e){e.classList.add('vis')})}
+})();
+</script>
+</body>
+</html>
