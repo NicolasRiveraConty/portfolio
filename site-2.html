@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurelia · Casa de Massas — Projeto conceito</title>
+<meta name="description" content="Projeto conceito de site para uma casa de massas com cozinha autoral. Layout de demonstração do portfólio — restaurante fictício.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ouro:#B0822A; --ouro-esc:#8F6720; --ouro-cl:#D8B66C; --creme:#F8F1E4; --creme-2:#F1E7D3; --carvao:#17130E; --marrom:#2A2118; --tinta:#1D1812; --suave:#6A6155; --linha:#E8DEC9; --branco:#fff;
+  --serif:'Cormorant Garamond',Georgia,serif; --cap:'Cinzel',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{font-family:var(--sans);font-weight:400;color:var(--tinta);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+svg.i{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:2px solid var(--ouro);outline-offset:3px}
+.wrap{width:min(1240px,100% - 56px);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--carvao);color:#fff;padding:10px 16px;z-index:100}.skip:focus{left:12px}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}*{animation:none!important}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 32px;font-family:var(--sans);font-weight:500;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--ouro);cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.btn-ouro{background:var(--ouro);color:#fff}.btn-ouro:hover{background:var(--ouro-esc);border-color:var(--ouro-esc);transform:translateY(-2px);box-shadow:0 14px 24px -14px rgba(143,103,32,.9)}
+.btn-line{background:transparent;color:var(--tinta);border-color:var(--tinta)}.btn-line:hover{background:var(--tinta);color:#fff;transform:translateY(-2px)}
+.btn-line-cl{color:#fff;border-color:rgba(255,255,255,.7)}.btn-line-cl:hover{background:#fff;color:var(--carvao)}
+.etq{font-size:.72rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--ouro)}
+.sec-t{text-align:center;margin-bottom:46px}
+.sec-t h2{font-family:var(--cap);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);letter-spacing:.08em;text-transform:uppercase;line-height:1.2;margin-top:8px}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px;color:var(--ouro)}
+.orn::before,.orn::after{content:"";width:64px;height:1px;background:currentColor;opacity:.8}
+.orn svg{width:14px;height:14px;fill:currentColor}
+/* topbar */
+.topbar{background:var(--creme-2);color:var(--suave);font-size:.78rem;letter-spacing:.03em}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:40px;gap:18px}
+.topbar span{display:inline-flex;align-items:center;gap:8px}.topbar .i{color:var(--ouro)}
+.topbar .soc{display:flex;gap:14px}.topbar a:hover{color:var(--ouro)}
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.hdr.rolou{border-color:var(--linha);box-shadow:0 12px 30px -24px rgba(0,0,0,.5)}
+.hdr .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:88px;gap:20px}
+.nav{display:flex;gap:34px;align-items:center}.nav.dir{justify-content:flex-end}
+.nav a.l{position:relative;font-size:.74rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:8px 0;transition:color .25s}
+.nav a.l::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ouro);transform:scaleX(0);transition:transform .3s;transform-origin:center}
+.nav a.l:hover,.nav a.l.on{color:var(--ouro)}.nav a.l:hover::after,.nav a.l.on::after{transform:scaleX(1)}
+.logo{text-align:center;display:block}
+.logo svg{width:30px;height:22px;color:var(--ouro);margin:0 auto 2px;display:block;fill:none;stroke:currentColor;stroke-width:1.4}
+.logo b{display:block;font-family:var(--cap);font-weight:500;font-size:1.7rem;letter-spacing:.14em;line-height:1.1;color:var(--tinta)}
+.logo small{display:block;font-size:.6rem;letter-spacing:.42em;text-transform:uppercase;color:var(--suave);margin-top:3px;padding-left:.42em}
+.hdr .btn{padding:11px 22px}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--linha);background:#fff;cursor:pointer;place-items:center}.menu-btn .i{width:22px;height:22px}
+.mnav{display:none}
+/* hero */
+.hero{position:relative;background:
+ radial-gradient(900px 500px at 78% 40%,rgba(255,255,255,.9),transparent 70%),
+ radial-gradient(600px 400px at 8% 10%,#efe0c2,transparent 70%),
+ linear-gradient(180deg,#f8f0e0,#fbf6ec);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:30px;min-height:620px;padding-block:50px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.8rem,5.4vw,4.9rem);line-height:1.02;letter-spacing:-.01em;margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--ouro);font-weight:600}
+.hero p.lead{font-size:1.06rem;color:var(--suave);max-width:27em;font-weight:300}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.hero .etq{display:inline-flex;align-items:center;gap:14px}.hero .etq::before{content:"";width:34px;height:1px;background:var(--ouro)}
+.pratoH{position:relative;justify-self:end;width:min(600px,100%);aspect-ratio:1}
+.pratoH .foto{position:absolute;inset:0;border-radius:50%;overflow:hidden;box-shadow:0 50px 80px -40px rgba(60,40,10,.6),0 0 0 12px rgba(255,255,255,.7),0 0 0 13px var(--ouro-cl)}
+.pratoH .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.04);animation:gira 22s ease-in-out infinite alternate}
+@keyframes gira{from{transform:scale(1.04) rotate(0)}to{transform:scale(1.1) rotate(4deg)}}
+.pratoH .ring{position:absolute;inset:-26px;border-radius:50%;border:1px dashed var(--ouro-cl);opacity:.7;animation:giraring 60s linear infinite}
+@keyframes giraring{to{transform:rotate(360deg)}}
+.ramo{position:absolute;color:#8b9a6a;opacity:.55;pointer-events:none}
+.ramo.r1{left:46%;bottom:-30px;width:150px;transform:rotate(18deg)}
+.ramo.r2{right:-30px;top:-20px;width:140px;transform:rotate(200deg);opacity:.35}
+.ramo svg{width:100%;fill:currentColor;stroke:none}
+/* categorias */
+.sec{padding-block:clamp(70px,8vw,112px)}
+.cats .row{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.cat{text-align:center;display:block;cursor:pointer}
+.cat .c{position:relative;aspect-ratio:1;border-radius:50%;padding:7px;background:#fff;border:1px solid var(--ouro-cl);margin-bottom:18px;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,border-color .3s}
+.cat .c img{width:100%;height:100%;object-fit:cover;border-radius:50%;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.cat .c::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--ouro);opacity:0;transform:scale(.94);transition:all .4s}
+.cat:hover .c{transform:translateY(-6px);box-shadow:0 26px 36px -22px rgba(80,55,15,.6)}.cat:hover .c::after{opacity:.7;transform:scale(1)}
+.cat:hover .c img{transform:scale(1.1)}
+.cat span{font-family:var(--cap);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+/* recomendações */
+.recs{background:linear-gradient(180deg,#fff,var(--creme) 40%)}
+.abas{display:flex;justify-content:center;gap:clamp(18px,3vw,40px);flex-wrap:wrap;margin:-14px 0 40px}
+.abas button{background:none;border:0;cursor:pointer;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 4px;color:var(--suave);position:relative;font-weight:500;transition:color .25s}
+.abas button::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--ouro);transform:scaleX(0);transition:transform .3s}
+.abas button:hover{color:var(--ouro)}
+.abas button[aria-selected=true]{color:var(--ouro)}.abas button[aria-selected=true]::after{transform:scaleX(1)}
+.grade{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--linha);transition:transform .4s,box-shadow .4s,border-color .3s;display:flex;flex-direction:column}
+.card[hidden]{display:none}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 44px -28px rgba(70,48,12,.55);border-color:var(--ouro-cl)}
+.card .im{position:relative;aspect-ratio:1.18;overflow:hidden;background:var(--creme-2)}
+.card .im img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.card:hover .im img{transform:scale(1.08)}
+.card .tg{position:absolute;left:0;top:14px;background:var(--ouro);color:#fff;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px 5px 12px;font-weight:500}
+.card .tx{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .ct{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro);font-weight:500}
+.card h3{font-family:var(--serif);font-size:1.4rem;font-weight:600;line-height:1.15}
+.card p{font-size:.88rem;color:var(--suave);font-weight:300;flex:1}
+.card .sel{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta);font-weight:500}
+.card .sel .i{width:15px;height:15px;color:var(--ouro);fill:var(--ouro)}
+/* faixa escura */
+.faixa{position:relative;color:#fff;background:#17130E;overflow:hidden;isolation:isolate}
+.faixa img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.55;transform:scale(1.03)}
+.faixa::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(23,19,14,.92),rgba(23,19,14,.55) 55%,rgba(23,19,14,.85))}
+.faixa .wrap{min-height:340px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-block:64px;gap:10px}
+.faixa .etq{color:var(--ouro-cl)}
+.faixa h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1}
+.faixa h2 em{color:var(--ouro-cl)}
+.faixa p{max-width:34em;color:#d9cfbd;font-weight:300}
+.faixa .btn{margin-top:20px}
+/* sobre */
+.sobre .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,96px);align-items:center}
+.sobre .fts{position:relative;padding-bottom:60px}
+.sobre .f1{width:78%;aspect-ratio:1.2;object-fit:cover;box-shadow:0 30px 50px -30px rgba(0,0,0,.5)}
+.sobre .f2{position:absolute;right:0;bottom:0;width:42%;aspect-ratio:.78;object-fit:cover;border:8px solid #fff;box-shadow:0 30px 50px -30px rgba(0,0,0,.5)}
+.sobre .fts::before{content:"";position:absolute;left:-18px;top:-18px;width:60%;height:70%;border:1px solid var(--ouro-cl);z-index:-1}
+.sobre h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,3.8vw,3.3rem);line-height:1.08;margin:14px 0 22px}
+.sobre h2 em{color:var(--ouro)}
+.sobre p{color:var(--suave);max-width:33em;font-weight:300;margin-bottom:14px}
+.assin{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--ouro);margin:18px 0 26px}
+.nums{display:flex;gap:44px;margin:28px 0 34px;padding-top:26px;border-top:1px solid var(--linha)}
+.nums b{display:block;font-family:var(--serif);font-size:2.6rem;color:var(--ouro);line-height:1;font-weight:600}.nums span{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
+/* visite */
+.visite{background:var(--creme)}
+.visite .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:stretch}
+.visite h2{font-family:var(--cap);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);letter-spacing:.08em;text-transform:uppercase;margin:10px 0 28px;line-height:1.2}
+.hor{margin-bottom:28px}
+.hor div{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid #dccfb3;font-size:.95rem}
+.hor span:last-child{font-family:var(--serif);font-size:1.2rem;font-weight:600}
+.ct-l{display:grid;gap:12px;margin-bottom:30px;font-size:.95rem;color:var(--suave)}
+.ct-l div{display:flex;gap:12px;align-items:center}.ct-l .i{color:var(--ouro)}
+.mapa{position:relative;min-height:380px;background:linear-gradient(135deg,#efe3cb,#e3d3b2);display:grid;place-items:center;text-align:center;padding:30px;border:1px solid #dccfb3;overflow:hidden}
+.mapa::before{content:"";position:absolute;inset:0;background:
+ linear-gradient(90deg,transparent 49%,rgba(255,255,255,.65) 49% 51%,transparent 51%) 0 0/110px 110px,
+ linear-gradient(0deg,transparent 49%,rgba(255,255,255,.65) 49% 51%,transparent 51%) 0 0/110px 110px,
+ linear-gradient(-30deg,transparent 48%,rgba(255,255,255,.5) 48% 50%,transparent 50%) 0 0/210px 210px}
+.mapa>div{position:relative;background:rgba(255,255,255,.85);padding:30px 36px;backdrop-filter:blur(3px);border:1px solid var(--ouro-cl)}
+.mapa .pin{width:44px;height:44px;margin:0 auto 12px;color:var(--ouro)}.mapa .pin svg{width:100%;height:100%;stroke-width:1.2}
+.mapa p{font-family:var(--serif);font-size:1.4rem;font-weight:600;line-height:1.25;margin-bottom:18px}
+/* benefícios */
+.benef{background:#fff;border-top:1px solid var(--linha)}
+.benef .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.benef div{display:flex;align-items:center;gap:16px;padding:30px 24px;border-left:1px solid var(--linha)}
+.benef div:first-child{border-left:0;padding-left:0}
+.benef .i{width:38px;height:38px;color:var(--ouro);stroke-width:1.2;transition:transform .4s}.benef div:hover .i{transform:translateY(-3px) scale(1.08)}
+.benef b{display:block;font-family:var(--cap);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;line-height:1.3}.benef span{font-size:.84rem;color:var(--suave);font-weight:300}
+/* rodapé */
+.rod{background:var(--carvao);color:#cfc5b2;padding-top:72px}
+.rod .cols{display:grid;grid-template-columns:1.5fr .8fr .8fr 1.2fr 1.4fr;gap:40px;padding-bottom:52px}
+.rod .logo{text-align:left}.rod .logo svg{margin-left:0}.rod .logo b{color:#fff}.rod .logo small{color:#a99d86;padding-left:0}
+.rod p{font-size:.9rem;font-weight:300;margin:18px 0 20px;max-width:22em}
+.rod h4{font-family:var(--cap);font-weight:500;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro-cl);margin-bottom:20px}
+.rod ul{list-style:none;display:grid;gap:11px;font-size:.9rem;font-weight:300}
+.rod li a{transition:color .2s,padding .2s}.rod li a:hover{color:var(--ouro-cl);padding-left:4px}
+.rod li.c{display:flex;gap:10px;align-items:flex-start}.rod li.c .i{color:var(--ouro-cl);margin-top:4px}
+.rod .soc{display:flex;gap:10px}.rod .soc a{display:grid;place-items:center;width:38px;height:38px;border:1px solid #4a4132;transition:all .3s}.rod .soc a:hover{background:var(--ouro);border-color:var(--ouro);color:#fff;transform:translateY(-3px)}
+.rod .news form{display:flex;border:1px solid #4a4132;margin-top:6px}
+.rod .news input{flex:1;min-width:0;background:none;border:0;padding:0 14px;height:48px;color:#fff;outline:0;font-size:.88rem}
+.rod .news input::placeholder{color:#8f8573}
+.rod .news button{background:var(--ouro);color:#fff;border:0;padding:0 18px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;font-weight:500;transition:background .25s}.rod .news button:hover{background:var(--ouro-esc)}
+.rod .fim{border-top:1px solid #2e271d;padding:20px 0;font-size:.78rem;color:#8f8573}
+.rod .fim .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.conceito{position:fixed;left:16px;bottom:16px;z-index:60;background:rgba(23,19,14,.9);color:#e9d9b4;border:1px solid rgba(216,182,108,.5);font-size:.64rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px;pointer-events:none}
+.toast{position:fixed;left:50%;bottom:28px;z-index:70;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--carvao);color:#fff;padding:14px 22px;font-size:.88rem;max-width:calc(100% - 32px);text-align:center;transition:all .4s;border:1px solid var(--ouro)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:1100px){
+  .nav{gap:20px}
+  .cats .row{grid-template-columns:repeat(3,1fr);row-gap:34px}
+  .grade{grid-template-columns:repeat(2,1fr)}
+  .rod .cols{grid-template-columns:1fr 1fr 1fr}.rod .cols>div:first-child{grid-column:1/-1}.rod .news{grid-column:span 2}
+  .benef .wrap{grid-template-columns:1fr 1fr}.benef div{border-top:1px solid var(--linha)}.benef div:nth-child(-n+2){border-top:0}.benef div:nth-child(odd){border-left:0;padding-left:0}
+}
+@media (max-width:900px){
+  .topbar .hm{display:none}.topbar .wrap{justify-content:center}
+  .hdr .wrap{grid-template-columns:44px 1fr 44px;min-height:76px}
+  .nav{display:none}
+  .menu-btn{display:grid;grid-column:1;grid-row:1}.logo{grid-column:2;grid-row:1}
+  .mnav{display:flex;position:fixed;left:0;right:0;top:116px;bottom:0;background:#fff;flex-direction:column;padding:20px 28px;opacity:0;transform:translateY(-10px);pointer-events:none;transition:all .3s;overflow:auto;z-index:49}
+  .mnav.aberto{opacity:1;transform:none;pointer-events:auto}
+  .mnav a{font-family:var(--cap);letter-spacing:.14em;text-transform:uppercase;padding:18px 4px;border-bottom:1px solid var(--linha);font-size:.95rem}
+  .hero .wrap{grid-template-columns:1fr;text-align:center;min-height:0;padding-block:44px 64px}
+  .hero p.lead{margin-inline:auto}.hero .cta{justify-content:center}.hero .etq::before{display:none}
+  .pratoH{justify-self:center;width:min(440px,86%);margin-top:20px}
+  .sobre .wrap,.visite .wrap{grid-template-columns:1fr}
+  .mapa{min-height:300px}
+}
+@media (max-width:640px){
+  .wrap{width:min(100% - 36px,1240px)}
+  .cats .row{gap:14px;row-gap:28px}.cat span{font-size:.68rem;letter-spacing:.1em}
+  .grade{grid-template-columns:1fr}
+  .hero .cta .btn{flex:1 1 100%}
+  .nums{gap:26px}.nums b{font-size:2.1rem}
+  .rod .cols{grid-template-columns:1fr 1fr}.rod .news{grid-column:1/-1}
+  .benef .wrap{grid-template-columns:1fr}.benef div{border-left:0!important;padding:20px 0!important;border-top:1px solid var(--linha)!important}.benef div:first-child{border-top:0!important}
+  .orn::before,.orn::after{width:36px}
+  .conceito{font-size:.58rem;padding:6px 10px}
+}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 9-9"/></symbol>
+<symbol id="i-chef" viewBox="0 0 24 24"><path d="M7 14.5a4 4 0 0 1-.5-7.9A4.5 4.5 0 0 1 12 3a4.5 4.5 0 0 1 5.5 3.6 4 4 0 0 1-.5 7.9"/><path d="M7 14.5V20h10v-5.5M7 17.5h10"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+<symbol id="i-utensils" viewBox="0 0 24 24"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 1.5-3 4-3 7 0 2 1 3 3 3"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12M12 8c-2-4-6-3-5 0M12 8c2-4 6-3 5 0"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4l4 3v4h-8"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+<symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-9M12 12c0-4-3-6-7-6 0 4 3 6 7 6zM12 14c0-3 2-5 6-5 0 3-2 5-6 5z"/></symbol>
+<symbol id="i-wine" viewBox="0 0 24 24"><path d="M7 3h10c0 5-1 9-5 9S7 8 7 3zM12 12v9M8 21h8"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.5 7-6.5 0-3-2-5-3-7-1.5 2-2 3-3 3 0-3-1-6-4-8 0 4-4 6-4 12 0 4 3 6.5 7 6.5z"/></symbol>
+<symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0zM8 7c0-1.5 1-1.5 1-3M12 7c0-1.5 1-1.5 1-3M16 7c0-1.5 1-1.5 1-3M8 21h8"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8 6.6 19.7l1.1-6.1L3.2 9.4l6.1-.8z"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6" fill="currentColor"/></symbol>
+<symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3.2 3.1z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M5 4l14 16M19 4 5 20"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-fish" viewBox="0 0 24 24"><path d="M3 12c3-5 8-6 12-4l4-3v14l-4-3c-4 2-9 1-12-4z"/><circle cx="8" cy="11" r=".6" fill="currentColor"/></symbol>
+<symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12V6a1.5 1.5 0 0 1 3 0v5M11 11V4.5a1.5 1.5 0 0 1 3 0V11M14 11V6a1.5 1.5 0 0 1 3 0v8c0 4-2 7-6 7-3 0-4.5-1.5-6-4l-2-3.5a1.5 1.5 0 0 1 2.5-1.5L8 14"/></symbol>
+</defs></svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="topbar"><div class="wrap">
+  <span class="hm"><svg class="i"><use href="#i-phone"/></svg>(11) 0000-0000</span>
+  <span class="hm"><svg class="i"><use href="#i-mail"/></svg>reservas@exemplo.com.br</span>
+  <span><svg class="i"><use href="#i-clock"/></svg>Terça a domingo · a partir das 12h</span>
+  <span class="soc hm"><a href="#" aria-label="Instagram"><svg class="i"><use href="#i-ig"/></svg></a><a href="#" aria-label="Facebook"><svg class="i"><use href="#i-fb"/></svg></a></span>
+</div></div>
+<header class="hdr" data-header><div class="wrap">
+  <nav class="nav" aria-label="Principal"><a class="l on" href="#topo">Início</a><a class="l" href="#cardapio">Cardápio</a><a class="l" href="#sobre">Sobre</a></nav>
+  <a class="logo" href="#topo" aria-label="Aurelia Casa de Massas — início">
+    <svg viewBox="0 0 30 22" aria-hidden="true"><path d="M3 18 1 6l7 6 7-9 7 9 7-6-2 12zM3 21h24"/></svg>
+    <b>AURELIA</b><small>Casa de Massas</small>
+  </a>
+  <nav class="nav dir" aria-label="Secundário"><a class="l" href="#reserva">Reservas</a><a class="l" href="#visite">Visite</a><a class="l" href="#contato">Contato</a><a class="btn btn-ouro" href="#reserva">Reservar</a></nav>
+  <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><svg class="i"><use href="#i-menu"/></svg></button>
+</div>
+<nav class="mnav" data-menu id="menu" aria-label="Menu mobile"><a href="#topo">Início</a><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre</a><a href="#reserva">Reservas</a><a href="#visite">Visite</a><a href="#contato">Contato</a></nav>
+</header>
+
+<main id="conteudo">
+<section class="hero" id="topo">
+  <span class="ramo r1" aria-hidden="true"><svg viewBox="0 0 120 160"><path d="M60 160C58 110 62 60 70 0" stroke="#8b9a6a" stroke-width="2" fill="none"/><path d="M62 130c-22-4-36-18-38-40 24 2 36 16 38 40zM66 100c20-6 32-20 32-42-22 6-32 20-32 42zM62 70c-18-6-28-18-28-38 20 6 28 18 28 38zM68 40c14-6 22-16 22-32-16 4-22 16-22 32z"/></svg></span>
+  <span class="ramo r2" aria-hidden="true"><svg viewBox="0 0 120 160"><path d="M60 160C58 110 62 60 70 0" stroke="#8b9a6a" stroke-width="2" fill="none"/><path d="M62 130c-22-4-36-18-38-40 24 2 36 16 38 40zM66 100c20-6 32-20 32-42-22 6-32 20-32 42zM62 70c-18-6-28-18-28-38 20 6 28 18 28 38z"/></svg></span>
+  <div class="wrap">
+    <div class="rv">
+      <span class="etq">Experiência à mesa</span>
+      <h1>Massas frescas,<br>momentos <em>inesquecíveis</em></h1>
+      <p class="lead">Uma casa de massas feitas todos os dias, com ingredientes selecionados e o tempo certo de cada receita. Pensada para você saborear sem pressa.</p>
+      <div class="cta"><a class="btn btn-ouro" href="#reserva">Reservar mesa</a><a class="btn btn-line" href="#cardapio">Explorar cardápio</a></div>
+    </div>
+    <div class="pratoH rv" style="--d:.15s"><span class="ring" aria-hidden="true"></span><div class="foto"><img src="s2-hero.jpg" alt="Prato de espaguete servido em prato fundo branco" width="1400" height="933" fetchpriority="high"></div></div>
+  </div>
+</section>
+
+<section class="sec cats" id="categorias"><div class="wrap">
+  <div class="sec-t rv"><h2>Nossas categorias</h2><div class="orn"><svg viewBox="0 0 14 14"><path d="M7 0l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg></div></div>
+  <div class="row">
+    <a class="cat rv" href="#cardapio" data-ir-aba="entradas"><div class="c"><img src="s2-cat-entradas.jpg" alt="" width="500" height="334" loading="lazy"></div><span>Entradas</span></a>
+    <a class="cat rv" style="--d:.06s" href="#cardapio" data-ir-aba="massas"><div class="c"><img src="s2-cat-massas.jpg" alt="" width="500" height="500" loading="lazy"></div><span>Massas</span></a>
+    <a class="cat rv" style="--d:.12s" href="#cardapio" data-ir-aba="carnes"><div class="c"><img src="s2-cat-carnes.jpg" alt="" width="500" height="333" loading="lazy"></div><span>Carnes</span></a>
+    <a class="cat rv" style="--d:.18s" href="#cardapio" data-ir-aba="sobremesas"><div class="c"><img src="s2-cat-sobremesas.jpg" alt="" width="500" height="667" loading="lazy"></div><span>Sobremesas</span></a>
+    <a class="cat rv" style="--d:.24s" href="#cardapio" data-ir-aba="todos"><div class="c"><img src="s2-cat-drinks.jpg" alt="" width="500" height="334" loading="lazy"></div><span>Drinks</span></a>
+    <a class="cat rv" style="--d:.3s" href="#cardapio" data-ir-aba="todos"><div class="c"><img src="s2-cat-especiais.jpg" alt="" width="500" height="334" loading="lazy"></div><span>Especiais do chef</span></a>
+  </div>
+</div></section>
+
+<section class="sec recs" id="cardapio"><div class="wrap">
+  <div class="sec-t rv"><span class="etq">Seleção da casa</span><h2>Recomendações do chef</h2><div class="orn"><svg viewBox="0 0 14 14"><path d="M7 0l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg></div></div>
+  <div class="abas rv" role="tablist" aria-label="Categorias do cardápio" data-tabs="#recs">
+    <button role="tab" aria-selected="true" data-filtro="todos">Todos</button>
+    <button role="tab" aria-selected="false" tabindex="-1" data-filtro="entradas">Entradas</button>
+    <button role="tab" aria-selected="false" tabindex="-1" data-filtro="massas">Massas</button>
+    <button role="tab" aria-selected="false" tabindex="-1" data-filtro="carnes">Carnes</button>
+    <button role="tab" aria-selected="false" tabindex="-1" data-filtro="sobremesas">Sobremesas</button>
+  </div>
+  <div class="grade" id="recs">
+    <article class="card rv" data-cat="entradas"><div class="im"><img src="s2-p01.jpg" alt="Salada de massa farfalle com tomates e folhas" width="800" height="534" loading="lazy"><span class="tg">Mais pedida</span></div><div class="tx"><span class="ct">Entradas</span><h3>Salada de farfalle</h3><p>Massa curta com folhas, tomate e molho de ervas, servida fria.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="entradas" style="--d:.05s"><div class="im"><img src="s2-p02.jpg" alt="Tábua com tostas cobertas com abacate, ricota e tomate" width="800" height="600" loading="lazy"></div><div class="tx"><span class="ct">Entradas</span><h3>Tostas da casa</h3><p>Pão tostado com coberturas da estação, ideal para dividir.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="entradas" style="--d:.1s"><div class="im"><img src="s2-p03.jpg" alt="Tigela com legumes frescos, grãos e folhas" width="800" height="800" loading="lazy"></div><div class="tx"><span class="ct">Entradas</span><h3>Bowl primavera</h3><p>Folhas, grãos e legumes frescos em uma entrada leve e colorida.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="massas" style="--d:.15s"><div class="im"><img src="s2-p04.jpg" alt="Penne ao molho de tomate em prato branco" width="800" height="800" loading="lazy"><span class="tg">Novo</span></div><div class="tx"><span class="ct">Massas</span><h3>Penne ao pomodoro</h3><p>Massa fresca com molho de tomate maduro e manjericão.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="massas"><div class="im"><img src="s2-p05.jpg" alt="Tagliatelle com carne em frigideira" width="800" height="498" loading="lazy"></div><div class="tx"><span class="ct">Massas</span><h3>Tagliatelle da casa</h3><p>Fitas de massa fresca com molho encorpado de cozimento lento.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="massas" style="--d:.05s"><div class="im"><img src="s2-p06.jpg" alt="Espaguete com camarões e tomates na frigideira" width="800" height="533" loading="lazy"></div><div class="tx"><span class="ct">Massas</span><h3>Espaguete com camarões</h3><p>Camarões, tomate e ervas salteados na hora com o espaguete.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="carnes" style="--d:.1s"><div class="im"><img src="s2-p07.jpg" alt="Bife grelhado fatiado com batatas fritas" width="800" height="533" loading="lazy"></div><div class="tx"><span class="ct">Carnes</span><h3>Bife grelhado com batatas</h3><p>Corte grelhado ao ponto, fatiado e servido com batatas crocantes.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="carnes" style="--d:.15s"><div class="im"><img src="s2-p08.jpg" alt="Costelas sobre tábua com molho e legumes" width="800" height="534" loading="lazy"></div><div class="tx"><span class="ct">Carnes</span><h3>Costelas na brasa</h3><p>Costelas macias com molho defumado e acompanhamentos.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="carnes"><div class="im"><img src="s2-p09.jpg" alt="Corte de carne fatiado em tábua" width="800" height="533" loading="lazy"></div><div class="tx"><span class="ct">Carnes</span><h3>Corte nobre ao ponto</h3><p>Corte selado na chapa e fatiado, com guarnição do dia.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="sobremesas" style="--d:.05s"><div class="im"><img src="s2-p10.jpg" alt="Fatia de tiramisù em prato com flores ao fundo" width="800" height="1067" loading="lazy"></div><div class="tx"><span class="ct">Sobremesas</span><h3>Tiramisù clássico</h3><p>Camadas de creme, café e cacau, servido gelado.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="sobremesas" style="--d:.1s"><div class="im"><img src="s2-p11.jpg" alt="Brownie com sorvete e calda de chocolate" width="800" height="533" loading="lazy"></div><div class="tx"><span class="ct">Sobremesas</span><h3>Brownie com sorvete</h3><p>Brownie quente, bolas de sorvete e calda de chocolate.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+    <article class="card rv" data-cat="sobremesas" style="--d:.15s"><div class="im"><img src="s2-p12.jpg" alt="Bolo de chocolate com cobertura cremosa" width="800" height="588" loading="lazy"></div><div class="tx"><span class="ct">Sobremesas</span><h3>Bolo de chocolate</h3><p>Camadas de chocolate com cobertura cremosa e finalização crocante.</p><span class="sel"><svg class="i"><use href="#i-star"/></svg>Chef recomenda</span></div></article>
+  </div>
+</div></section>
+
+<section class="faixa" id="reserva">
+  <img class="bg" src="s2-faixa.jpg" alt="" width="1600" height="1067" loading="lazy">
+  <div class="wrap rv">
+    <span class="etq">Oferta especial</span>
+    <h2>Noite da massa fresca, <em>toda quinta</em></h2>
+    <p>Menu em etapas com entrada, massa do dia e sobremesa. Vagas limitadas, reserve com antecedência.</p>
+    <a class="btn btn-ouro" href="#contato">Reservar agora</a>
+  </div>
+</section>
+
+<section class="sec sobre" id="sobre"><div class="wrap">
+  <div class="fts rv"><img class="f1" src="s2-sobre.jpg" alt="Mesa posta com taças de vinho e pratos servidos" width="1100" height="733" loading="lazy"><img class="f2" src="s2-sobre2.jpg" alt="Dois pratos de massa servidos na mesa com vinho" width="800" height="1190" loading="lazy"></div>
+  <div class="rv" style="--d:.1s">
+    <span class="etq">Nossa casa</span>
+    <h2>Tradição na mesa,<br><em>cuidado</em> em cada detalhe</h2>
+    <p>A Aurelia nasceu da ideia de que uma boa refeição é feita de tempo, de produto e de companhia. Nossas massas são preparadas diariamente, e o cardápio acompanha o que há de melhor em cada estação.</p>
+    <p>No salão, o serviço é atencioso e o ambiente é acolhedor, para almoços longos, jantares a dois e comemorações.</p>
+    <div class="nums"><div><b>Diárias</b><span>Massas feitas na casa</span></div><div><b>Sazonal</b><span>Cardápio renovado</span></div></div>
+    <a class="btn btn-line" href="#visite">Conheça a casa</a>
+  </div>
+</div></section>
+
+<section class="sec visite" id="visite"><div class="wrap">
+  <div class="rv">
+    <span class="etq">Visite-nos</span>
+    <h2>Horários e endereço</h2>
+    <div class="hor"><div><span>Terça a quinta</span><span>12h – 15h · 19h – 23h</span></div><div><span>Sexta e sábado</span><span>12h – 16h · 19h – 00h</span></div><div><span>Domingo</span><span>12h – 17h</span></div></div>
+    <div class="ct-l"><div><svg class="i"><use href="#i-pin"/></svg>Rua das Acácias, 456 · Jardins, São Paulo/SP</div><div><svg class="i"><use href="#i-phone"/></svg>(11) 0000-0000</div></div>
+    <a class="btn btn-ouro" href="https://www.google.com/maps/search/?api=1&query=Jardins+S%C3%A3o+Paulo" target="_blank" rel="noopener">Ver no Google Maps</a>
+  </div>
+  <div class="mapa rv" style="--d:.1s"><div><span class="pin"><svg class="i"><use href="#i-pin"/></svg></span><p>Aurelia · Casa de Massas<br>Jardins, São Paulo</p><a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Jardins+S%C3%A3o+Paulo" target="_blank" rel="noopener">Como chegar</a></div></div>
+</div></section>
+
+<section class="benef" aria-label="Diferenciais"><div class="wrap">
+  <div><svg class="i"><use href="#i-sprout"/></svg><p><b>Ingredientes frescos</b><span>Da feira para a cozinha</span></p></div>
+  <div><svg class="i"><use href="#i-chef"/></svg><p><b>Chefs experientes</b><span>Receitas feitas com paixão</span></p></div>
+  <div><svg class="i"><use href="#i-wine"/></svg><p><b>Carta de vinhos</b><span>Boas harmonizações</span></p></div>
+  <div><svg class="i"><use href="#i-gift"/></svg><p><b>Eventos privados</b><span>Para ocasiões especiais</span></p></div>
+</div></section>
+</main>
+
+<footer class="rod" id="contato"><div class="wrap">
+  <div class="cols">
+    <div><a class="logo" href="#topo"><svg viewBox="0 0 30 22" aria-hidden="true"><path d="M3 18 1 6l7 6 7-9 7 9 7-6-2 12zM3 21h24"/></svg><b>AURELIA</b><small>Casa de Massas</small></a><p>Massas frescas, ambiente acolhedor e serviço atencioso. Sua mesa está reservada.</p><div class="soc"><a href="#" aria-label="Instagram"><svg class="i"><use href="#i-ig"/></svg></a><a href="#" aria-label="Facebook"><svg class="i"><use href="#i-fb"/></svg></a><a href="#" aria-label="WhatsApp"><svg class="i"><use href="#i-wa"/></svg></a></div></div>
+    <div><h4>Navegação</h4><ul><li><a href="#topo">Início</a></li><li><a href="#cardapio">Cardápio</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#visite">Visite</a></li></ul></div>
+    <div><h4>Cardápio</h4><ul><li><a href="#cardapio">Entradas</a></li><li><a href="#cardapio">Massas</a></li><li><a href="#cardapio">Carnes</a></li><li><a href="#cardapio">Sobremesas</a></li></ul></div>
+    <div><h4>Contato</h4><ul><li class="c"><svg class="i"><use href="#i-pin"/></svg>Rua das Acácias, 456<br>Jardins, São Paulo/SP</li><li class="c"><svg class="i"><use href="#i-phone"/></svg>(11) 0000-0000</li><li class="c"><svg class="i"><use href="#i-mail"/></svg>reservas@exemplo.com.br</li></ul></div>
+    <div class="news"><h4>Newsletter</h4><ul><li style="line-height:1.5">Receba novidades do cardápio e convites para eventos.</li></ul><form data-ilustrativo="Formulário ilustrativo — este é um projeto conceito." novalidate><input type="email" placeholder="Seu e-mail" aria-label="Seu e-mail"><button type="submit">Assinar</button></form></div>
+  </div>
+</div>
+<div class="fim"><div class="wrap"><span>© 2026 Aurelia Casa de Massas — restaurante fictício. Projeto conceito de portfólio.</span><span>Fotos: Unsplash (licença livre)</span></div></div>
+</footer>
+<div class="conceito">Projeto conceito</div>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>

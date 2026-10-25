@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Akai Ramen-ya · 赤 — Projeto conceito</title>
+<meta name="description" content="Projeto conceito de site para uma ramen-ya e izakaya. Layout de demonstração do portfólio — restaurante fictício.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verm:#C1121F; --verm-esc:#8E0D17; --vinho:#6D0A12; --vinho-2:#560810; --creme:#F7EADA; --creme-2:#F1DFC8; --papel:#FBF3E8; --laranja:#F3A642; --laranja-esc:#E2902A; --tinta:#2A120F; --suave:#6F5149; --linha:#E6D2B8;
+  --serif:'Shippori Mincho B1','Hiragino Mincho ProN',Georgia,serif; --sans:'Zen Kaku Gothic New',system-ui,sans-serif;
+  --ondas:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40' fill='none' stroke='%23C1121F' stroke-opacity='.16' stroke-width='1.2'%3E%3Cg id='a'%3E%3Ccircle cx='40' cy='40' r='36'/%3E%3Ccircle cx='40' cy='40' r='27'/%3E%3Ccircle cx='40' cy='40' r='18'/%3E%3Ccircle cx='40' cy='40' r='9'/%3E%3C/g%3E%3Cuse href='%23a' x='-40' y='-20'/%3E%3Cuse href='%23a' x='40' y='-20'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--sans);color:var(--tinta);background:var(--papel);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:2px solid var(--laranja);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1200px,100% - 56px);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:var(--verm);padding:10px 16px;z-index:100;border-radius:8px}.skip:focus{left:12px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}*{animation:none!important}}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;font-weight:700;font-size:.86rem;letter-spacing:.06em;border:2px solid transparent;cursor:pointer;transition:transform .3s,background .3s,color .3s,box-shadow .3s,border-color .3s}
+.btn .i{width:1.05em;height:1.05em;transition:transform .3s}.btn:hover .i{transform:translateX(4px)}
+.btn-lar{background:var(--laranja);color:#3a1208;box-shadow:0 14px 26px -14px rgba(243,166,66,.9)}.btn-lar:hover{background:var(--laranja-esc);transform:translateY(-3px)}
+.btn-verm{background:var(--verm);color:#fff;box-shadow:0 14px 26px -14px rgba(193,18,31,.9)}.btn-verm:hover{background:var(--verm-esc);transform:translateY(-3px)}
+.btn-fan{border-color:rgba(255,255,255,.55);color:#fff}.btn-fan:hover{background:#fff;color:var(--verm);transform:translateY(-3px)}
+.etq{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--verm)}
+.etq::before{content:"";width:26px;height:2px;background:currentColor}
+.h{font-family:var(--serif);font-weight:800;line-height:1.12;letter-spacing:-.005em}
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s,box-shadow .35s,backdrop-filter .35s}
+.hdr.rolou{background:rgba(109,10,18,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 14px 30px -20px rgba(0,0,0,.6)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:84px;transition:min-height .3s}.hdr.rolou .wrap{min-height:70px}
+.logo{display:flex;align-items:center;gap:12px;color:#fff}
+.hanko{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#fff;color:var(--verm);font-family:var(--serif);font-weight:800;font-size:1.6rem;line-height:1;transform:rotate(-4deg);box-shadow:0 8px 16px -8px rgba(0,0,0,.5)}
+.logo b{display:block;font-family:var(--serif);font-weight:800;font-size:1.25rem;line-height:1.05;letter-spacing:.03em}
+.logo small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;opacity:.85;font-weight:500}
+.nav{display:flex;gap:6px;align-items:center}
+.nav a.l{position:relative;color:#fff;font-size:.88rem;font-weight:500;padding:10px 14px;letter-spacing:.04em;opacity:.92;transition:opacity .2s,color .2s}
+.nav a.l::after{content:"";position:absolute;left:50%;bottom:4px;width:5px;height:5px;border-radius:50%;background:var(--laranja);transform:translateX(-50%) scale(0);transition:transform .3s}
+.nav a.l:hover{opacity:1}.nav a.l:hover::after{transform:translateX(-50%) scale(1)}
+.hdr .btn{padding:11px 24px;font-size:.8rem;margin-left:10px}
+.menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;cursor:pointer;place-items:center}.menu-btn .i{width:22px;height:22px}
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 600px at 68% 42%,#E5252E 0,#C1121F 48%,#8f0c16 100%);isolation:isolate}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(180deg,rgba(80,4,10,0),rgba(80,4,10,.55));z-index:-1}
+.hero::before{content:"";position:absolute;inset:0;background:var(--ondas);background-size:100px 50px;filter:invert(1);opacity:.35;z-index:-1;mask-image:radial-gradient(600px 500px at 15% 30%,#000,transparent 70%);-webkit-mask-image:radial-gradient(600px 500px at 15% 30%,#000,transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;min-height:min(820px,100svh);padding:130px 0 90px}
+.hero .etq{color:#FFD9A6}
+.hero h1{font-size:clamp(2.7rem,5.6vw,5rem);margin:18px 0 22px;text-shadow:0 6px 30px rgba(60,0,6,.35)}
+.hero h1 em{font-style:normal;color:var(--laranja);display:inline-block;position:relative}
+.hero h1 em::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.04em;height:.12em;background:var(--laranja);opacity:.35;border-radius:99px}
+.hero p.lead{max-width:27em;color:#ffe9de;font-size:1.06rem}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.kanji{position:absolute;right:3%;top:130px;writing-mode:vertical-rl;font-family:var(--serif);font-weight:800;font-size:clamp(3rem,6vw,5.4rem);letter-spacing:.2em;color:#fff;opacity:.1;user-select:none;pointer-events:none}
+.tigelaH{position:relative;justify-self:center;width:min(560px,100%);aspect-ratio:1}
+.tigelaH .foto{position:absolute;inset:0;border-radius:50%;overflow:hidden;box-shadow:0 50px 70px -30px rgba(40,0,5,.85),0 0 0 14px rgba(255,255,255,.14),0 0 0 15px rgba(255,255,255,.55)}
+.tigelaH .foto img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);animation:respira 14s ease-in-out infinite alternate}
+@keyframes respira{from{transform:scale(1.12) rotate(0)}to{transform:scale(1.2) rotate(-3deg)}}
+.tigelaH .anel{position:absolute;inset:-34px;border-radius:50%;border:1px dashed rgba(255,255,255,.4);animation:gira 70s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.chip{position:absolute;z-index:2;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--tinta);font-size:.78rem;font-weight:700;padding:8px 16px 8px 10px;border-radius:999px;box-shadow:0 14px 26px -12px rgba(0,0,0,.55);animation:flut 6s ease-in-out infinite alternate}
+.chip i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--verm);color:#fff;font-style:normal;font-family:var(--serif);font-size:.8rem}
+.chip.c1{left:-6%;top:16%}.chip.c2{right:-4%;top:52%;animation-delay:-2s}.chip.c3{left:6%;bottom:6%;animation-delay:-4s}
+@keyframes flut{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+.gr{position:absolute;border-radius:50%;background:#FFE3B8;opacity:.8;z-index:-1;animation:flut 7s ease-in-out infinite alternate}
+.gr.a{width:10px;height:10px;left:46%;top:24%}.gr.b{width:7px;height:7px;left:52%;top:70%;animation-delay:-3s;background:var(--laranja)}.gr.c{width:12px;height:12px;left:8%;bottom:16%;animation-delay:-1s}.gr.d{width:8px;height:8px;right:7%;bottom:22%;animation-delay:-5s;background:var(--laranja)}.gr.e{width:9px;height:9px;left:40%;bottom:10%;animation-delay:-2s}
+/* seção 2 */
+.sec{position:relative;padding-block:clamp(72px,9vw,120px)}
+.sobre{background:var(--creme)}
+.sobre .wrap{display:grid;grid-template-columns:.95fr 1.25fr;gap:clamp(30px,5vw,80px);align-items:center}
+.ic{display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:var(--verm);color:#fff;margin-bottom:22px;box-shadow:0 14px 24px -12px rgba(193,18,31,.8),0 0 0 6px rgba(193,18,31,.12)}.ic .i{width:30px;height:30px;stroke-width:1.5}
+.sobre h2{font-size:clamp(1.9rem,3.2vw,2.8rem);margin:14px 0 18px;color:var(--vinho)}
+.sobre p{color:var(--suave);max-width:30em;margin-bottom:12px}
+.sobre .btn{margin-top:20px}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.cp{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:.72;background:var(--verm);box-shadow:0 30px 40px -26px rgba(80,10,10,.7);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.cp:nth-child(2){margin-top:44px}.cp:nth-child(3){margin-top:12px}
+.cp:hover{transform:translateY(-10px) rotate(-1deg)}
+.cp img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}.cp:hover img{transform:scale(1.07)}
+.cp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(60,4,8,.88));pointer-events:none}
+.cp figcaption{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fff}
+.cp b{display:block;font-family:var(--serif);font-weight:800;font-size:1.4rem;line-height:1.1}.cp span{font-size:.8rem;opacity:.9;line-height:1.35;display:block;margin-top:4px}
+.cp .jp{position:absolute;right:14px;top:12px;z-index:2;writing-mode:vertical-rl;font-family:var(--serif);font-weight:800;color:#fff;font-size:1.1rem;letter-spacing:.15em;opacity:.9}
+/* cardápio */
+.card-s{background:var(--papel);overflow:hidden}
+.card-s::before{content:"";position:absolute;left:-60px;top:40px;width:420px;height:520px;background:var(--ondas);background-size:100px 50px;opacity:.9;mask-image:radial-gradient(closest-side,#000 40%,transparent);-webkit-mask-image:radial-gradient(closest-side,#000 40%,transparent);pointer-events:none}
+.card-s .topo{position:relative;text-align:center;margin-bottom:56px}
+.card-s h2{font-size:clamp(2rem,3.6vw,3.1rem);color:var(--vinho);margin-top:14px}
+.card-s .topo p{color:var(--suave);max-width:34em;margin:14px auto 0}
+.cols3{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.col{padding:0 clamp(18px,3vw,40px);border-left:1px solid var(--linha)}.col:first-child{border-left:0;padding-left:0}.col:last-child{padding-right:0}
+.col .ic{width:54px;height:54px;margin-bottom:16px}.col .ic .i{width:26px;height:26px}
+.col h3{font-family:var(--serif);font-weight:800;font-size:1.5rem;color:var(--vinho);margin-bottom:18px;display:flex;align-items:baseline;gap:12px}
+.col h3 small{font-family:var(--sans);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--verm);font-weight:700}
+.col ul{list-style:none;display:grid;gap:0}
+.col li{padding:14px 0;border-bottom:1px dashed #d9bf9f;transition:padding .3s}
+.col li:hover{padding-left:8px}
+.col li b{display:block;font-family:var(--serif);font-weight:700;font-size:1.08rem;color:var(--tinta)}
+.col li span{font-size:.88rem;color:var(--suave);line-height:1.5;display:block}
+/* izakaya */
+.iza{background:var(--creme)}
+.iza .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+.bloco{display:grid;grid-template-columns:1fr;gap:24px;background:#fff;border-radius:28px;padding:18px 18px 34px;box-shadow:0 30px 44px -34px rgba(80,20,10,.6);transition:transform .45s,box-shadow .45s}
+.bloco:hover{transform:translateY(-6px);box-shadow:0 40px 50px -34px rgba(80,20,10,.7)}
+.bloco .im{aspect-ratio:1.6;border-radius:20px;overflow:hidden}
+.bloco .im img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}.bloco:hover .im img{transform:scale(1.06)}
+.bloco .tx{padding:0 14px}
+.bloco .tx .ic{width:52px;height:52px;margin:-52px 0 14px;position:relative;border:4px solid #fff;box-shadow:0 12px 20px -10px rgba(193,18,31,.7)}.bloco .tx .ic .i{width:24px;height:24px}
+.bloco h3{font-family:var(--serif);font-weight:800;font-size:1.6rem;color:var(--vinho);margin-bottom:8px}
+.bloco p{color:var(--suave);font-size:.95rem;margin-bottom:20px}
+/* tigela com onda */
+.onda-s{position:relative;background:linear-gradient(180deg,var(--vinho),var(--vinho-2));color:#fff;padding-top:clamp(110px,12vw,170px);overflow:hidden}
+.onda-s .onda{position:absolute;left:0;right:0;top:-1px;height:clamp(70px,9vw,130px);color:var(--creme);display:block;width:100%}
+.onda-s .onda path{fill:currentColor}
+.onda-s .onda.b{top:auto;bottom:-1px;transform:rotate(180deg) scaleX(-1)}
+.onda-s .wrap{position:relative;display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-bottom:clamp(120px,12vw,180px)}
+.onda-s h2{font-size:clamp(1.9rem,3.2vw,2.7rem);margin:12px 0 16px}.onda-s h2 em{font-style:normal;color:var(--laranja)}
+.onda-s p{color:#f1cfc4;max-width:24em;margin-bottom:22px}
+.onda-s .etq{color:var(--laranja)}
+.tig{position:relative;width:clamp(260px,32vw,420px);aspect-ratio:1;margin-top:-80px}
+.tig .foto{position:absolute;inset:0;border-radius:50%;overflow:hidden;box-shadow:0 50px 70px -30px rgba(0,0,0,.8),0 0 0 10px rgba(255,255,255,.1),0 0 0 11px rgba(255,255,255,.4)}
+.tig .foto img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}.tig:hover .foto img{transform:scale(1.16) rotate(-3deg)}
+.onda-s .d{text-align:right}.onda-s .d p{margin-left:auto}
+.onda-s .d .etq::before{display:none}.onda-s .d .etq::after{content:"";width:26px;height:2px;background:currentColor}
+.onda-s::before{content:"";position:absolute;inset:0;background:var(--ondas);background-size:100px 50px;filter:invert(1);opacity:.08;pointer-events:none}
+/* visite */
+.visite{background:var(--creme)}
+.visite .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:stretch}
+.visite h2{font-size:clamp(1.9rem,3.2vw,2.7rem);color:var(--vinho);margin:12px 0 26px}
+.hor div{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px dashed #d4b894}
+.hor span:last-child{font-weight:700;color:var(--verm)}
+.ctl{display:grid;gap:12px;margin:26px 0 30px;color:var(--suave)}.ctl div{display:flex;gap:12px;align-items:center}.ctl .i{color:var(--verm)}
+.mapa{position:relative;border-radius:30px;overflow:hidden;min-height:380px;background:linear-gradient(135deg,#f0dcc0,#e6cda8);display:grid;place-items:center;text-align:center;padding:30px;border:1px solid var(--linha)}
+.mapa::before{content:"";position:absolute;inset:0;background:var(--ondas);background-size:100px 50px;opacity:1}
+.mapa>div{position:relative}
+.mapa .sel{display:grid;place-items:center;width:86px;height:86px;border-radius:50%;background:var(--verm);color:#fff;margin:0 auto 18px;box-shadow:0 20px 30px -12px rgba(193,18,31,.8),0 0 0 8px rgba(193,18,31,.15);font-family:var(--serif);font-weight:800;font-size:2.6rem}
+.mapa p{font-family:var(--serif);font-weight:800;font-size:1.4rem;color:var(--vinho);margin-bottom:18px;line-height:1.25}
+/* rodapé */
+.rod{position:relative;background:var(--vinho-2);color:#e8c7bc;padding-top:70px}
+.rod .cols{display:grid;grid-template-columns:1.5fr .8fr .9fr 1.2fr 1.3fr;gap:40px;padding-bottom:48px}
+.rod p{font-size:.92rem;margin:18px 0 20px;max-width:22em}
+.rod h4{font-family:var(--serif);font-weight:800;font-size:1rem;color:var(--laranja);margin-bottom:18px;letter-spacing:.04em}
+.rod ul{list-style:none;display:grid;gap:10px;font-size:.92rem}
+.rod li a{transition:color .2s,padding .2s}.rod li a:hover{color:#fff;padding-left:4px}
+.rod li.c{display:flex;gap:10px;align-items:flex-start}.rod li.c .i{color:var(--laranja);margin-top:4px}
+.rod .soc{display:flex;gap:10px}.rod .soc a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);transition:all .3s}.rod .soc a:hover{background:var(--laranja);color:#3a1208;border-color:var(--laranja);transform:translateY(-3px)}
+.rod .news form{display:flex;border-radius:999px;overflow:hidden;border:1.5px solid rgba(255,255,255,.25);margin-top:6px}
+.rod .news input{flex:1;min-width:0;background:none;border:0;padding:0 18px;height:48px;color:#fff;outline:0;font-size:.9rem}.rod .news input::placeholder{color:#c79d92}
+.rod .news button{background:var(--laranja);color:#3a1208;border:0;padding:0 22px;font-weight:700;font-size:.8rem;cursor:pointer;transition:background .25s}.rod .news button:hover{background:var(--laranja-esc)}
+.rod .fim{border-top:1px solid rgba(255,255,255,.12);padding:20px 0;font-size:.8rem;color:#b88c80}.rod .fim .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.rod .logo{color:#fff}
+.conceito{position:fixed;left:16px;bottom:16px;z-index:60;background:rgba(42,18,15,.9);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px;border-radius:999px;display:flex;gap:8px;align-items:center;pointer-events:none;border:1px solid rgba(255,255,255,.2)}
+.conceito::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--laranja)}
+.toast{position:fixed;left:50%;bottom:28px;z-index:70;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--tinta);color:#fff;padding:14px 22px;border-radius:12px;font-size:.88rem;max-width:calc(100% - 32px);text-align:center;transition:all .4s}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:1100px){
+  .nav a.l{padding:10px 8px;font-size:.8rem}
+  .cols3{grid-template-columns:1fr 1fr}.col:nth-child(3){grid-column:1/-1;border-left:0;padding:34px 0 0}
+  .col:nth-child(2){padding-right:0}
+  .rod .cols{grid-template-columns:1fr 1fr 1fr}.rod .cols>div:first-child{grid-column:1/-1}.rod .news{grid-column:span 2}
+}
+@media (max-width:900px){
+  .menu-btn{display:grid}
+  .nav{position:fixed;left:0;right:0;top:0;bottom:0;background:var(--vinho);flex-direction:column;justify-content:center;gap:2px;padding:90px 28px 40px;opacity:0;pointer-events:none;transform:scale(1.02);transition:all .3s;z-index:-1}
+  .nav.aberto{opacity:1;pointer-events:auto;transform:none}
+  .nav a.l{font-family:var(--serif);font-weight:800;font-size:1.7rem;padding:12px}
+  .hdr .btn{display:none}.hdr .nav .btn{display:inline-flex;margin-top:20px;font-size:.9rem}
+  .hdr{z-index:60}.hdr .logo,.hdr .menu-btn{position:relative;z-index:2}
+  body.menu-aberto .hdr{background:transparent;box-shadow:none;backdrop-filter:none}
+  .hero .wrap{grid-template-columns:1fr;text-align:center;padding:120px 0 80px;min-height:0;gap:44px}
+  .hero p.lead{margin-inline:auto}.hero .cta{justify-content:center}.hero .etq::before{display:none}
+  .tigelaH{width:min(420px,84%)}.kanji{display:none}
+  .chip.c1{left:-8%}.chip.c2{right:-8%}
+  .sobre .wrap,.iza .wrap,.visite .wrap{grid-template-columns:1fr}
+  .onda-s .wrap{grid-template-columns:1fr;text-align:center}.onda-s p,.onda-s .d p{margin-inline:auto}.onda-s .d{text-align:center}.onda-s .etq::before,.onda-s .d .etq::after{display:none}
+  .tig{margin:-40px auto 0;order:-1}
+  .onda-s .btn{margin-inline:auto}
+}
+@media (max-width:640px){
+  .wrap{width:min(100% - 36px,1200px)}
+  .cards3{gap:12px}.cp{border-radius:18px}.cp:nth-child(2){margin-top:28px}.cp figcaption{left:10px;right:10px;bottom:10px}.cp b{font-size:1rem}.cp span{display:none}.cp .jp{font-size:.8rem;right:8px}
+  .cols3{grid-template-columns:1fr}.col{border-left:0;padding:28px 0 0!important}.col:first-child{padding-top:0!important}
+  .rod .cols{grid-template-columns:1fr 1fr}.rod .news{grid-column:1/-1}
+  .chip{font-size:.68rem;padding:6px 12px 6px 8px}.chip i{width:22px;height:22px}
+  .hero .cta .btn{flex:1 1 100%;justify-content:center}
+  .conceito{font-size:.58rem;padding:6px 10px}
+}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 9-9"/></symbol>
+<symbol id="i-chef" viewBox="0 0 24 24"><path d="M7 14.5a4 4 0 0 1-.5-7.9A4.5 4.5 0 0 1 12 3a4.5 4.5 0 0 1 5.5 3.6 4 4 0 0 1-.5 7.9"/><path d="M7 14.5V20h10v-5.5M7 17.5h10"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+<symbol id="i-utensils" viewBox="0 0 24 24"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 1.5-3 4-3 7 0 2 1 3 3 3"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12M12 8c-2-4-6-3-5 0M12 8c2-4 6-3 5 0"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4l4 3v4h-8"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+<symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-9M12 12c0-4-3-6-7-6 0 4 3 6 7 6zM12 14c0-3 2-5 6-5 0 3-2 5-6 5z"/></symbol>
+<symbol id="i-wine" viewBox="0 0 24 24"><path d="M7 3h10c0 5-1 9-5 9S7 8 7 3zM12 12v9M8 21h8"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.5 7-6.5 0-3-2-5-3-7-1.5 2-2 3-3 3 0-3-1-6-4-8 0 4-4 6-4 12 0 4 3 6.5 7 6.5z"/></symbol>
+<symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0zM8 7c0-1.5 1-1.5 1-3M12 7c0-1.5 1-1.5 1-3M16 7c0-1.5 1-1.5 1-3M8 21h8"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8 6.6 19.7l1.1-6.1L3.2 9.4l6.1-.8z"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6" fill="currentColor"/></symbol>
+<symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3.2 3.1z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M5 4l14 16M19 4 5 20"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-fish" viewBox="0 0 24 24"><path d="M3 12c3-5 8-6 12-4l4-3v14l-4-3c-4 2-9 1-12-4z"/><circle cx="8" cy="11" r=".6" fill="currentColor"/></symbol>
+<symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12V6a1.5 1.5 0 0 1 3 0v5M11 11V4.5a1.5 1.5 0 0 1 3 0V11M14 11V6a1.5 1.5 0 0 1 3 0v8c0 4-2 7-6 7-3 0-4.5-1.5-6-4l-2-3.5a1.5 1.5 0 0 1 2.5-1.5L8 14"/></symbol>
+</defs></svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="hdr" data-header><div class="wrap">
+  <a class="logo" href="#topo" aria-label="Akai Ramen-ya — início"><span class="hanko" aria-hidden="true">赤</span><span><b>Akai Ramen-ya</b><small>ラーメン屋</small></span></a>
+  <nav class="nav" data-menu id="menu" aria-label="Principal">
+    <a class="l" href="#topo">Início</a><a class="l" href="#sobre">Ramen</a><a class="l" href="#cardapio">Cardápio</a><a class="l" href="#izakaya">Izakaya</a><a class="l" href="#visite">Visite</a>
+    <a class="btn btn-lar" href="#visite">Reservar mesa</a>
+  </nav>
+  <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><svg class="i"><use href="#i-menu"/></svg></button>
+</div></header>
+
+<main id="conteudo">
+<section class="hero" id="topo">
+  <span class="gr a"></span><span class="gr b"></span><span class="gr c"></span><span class="gr d"></span><span class="gr e"></span>
+  <span class="kanji" aria-hidden="true">拉麺</span>
+  <div class="wrap">
+    <div class="rv">
+      <span class="etq">Ramen-ya · São Paulo</span>
+      <h1 class="h">Ramen de verdade,<br>feito <em>devagar</em></h1>
+      <p class="lead">Caldo cozido por horas, macarrão fresco e coberturas na medida certa. Uma tigela quente, pensada para quem gosta de saborear cada colherada.</p>
+      <div class="cta"><a class="btn btn-lar" href="#cardapio">Ver cardápio<svg class="i"><use href="#i-arrow"/></svg></a><a class="btn btn-fan" href="#visite">Reservar mesa</a></div>
+    </div>
+    <div class="tigelaH rv" style="--d:.15s">
+      <span class="anel" aria-hidden="true"></span>
+      <div class="foto"><img src="s3-hero.jpg" alt="Tigela de ramen com caldo, ovo marinado e cebolinha" width="1200" height="839" fetchpriority="high"></div>
+      <span class="chip c1"><i>卵</i>Ovo marinado</span><span class="chip c2"><i>麺</i>Macarrão fresco</span><span class="chip c3"><i>葱</i>Cebolinha</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sobre" id="sobre"><div class="wrap">
+  <div class="rv">
+    <div class="ic"><svg class="i"><use href="#i-bowl"/></svg></div>
+    <span class="etq">Nossa tigela</span>
+    <h2 class="h">Caldo de horas,<br>macarrão na hora</h2>
+    <p>Na Akai, o ramen é feito com calma: o caldo é cozido lentamente, o tempero é equilibrado e o macarrão chega à mesa no ponto certo.</p>
+    <p>Cada receita traz um jeito de saborear a cozinha japonesa de casas de ramen, com a atmosfera descontraída de uma ramen-ya.</p>
+    <a class="btn btn-verm" href="#cardapio">Conheça o cardápio<svg class="i"><use href="#i-arrow"/></svg></a>
+  </div>
+  <div class="cards3">
+    <figure class="cp rv"><span class="jp" aria-hidden="true">醤油</span><img src="s3-r1.jpg" alt="Ramen com ovo, salmão e cebolinha em tigela clara" width="800" height="1000" loading="lazy"><figcaption><b>Shoyu</b><span>Caldo claro e aromático</span></figcaption></figure>
+    <figure class="cp rv" style="--d:.1s"><span class="jp" aria-hidden="true">豚骨</span><img src="s3-r2.jpg" alt="Ramen em tigela escura com ovo e coberturas" width="800" height="533" loading="lazy" style="object-position:48% 50%"><figcaption><b>Tonkotsu</b><span>Caldo cremoso e encorpado</span></figcaption></figure>
+    <figure class="cp rv" style="--d:.2s"><span class="jp" aria-hidden="true">味噌</span><img src="s3-r3.jpg" alt="Ramen de missô com legumes e ovo em tigela clara" width="800" height="533" loading="lazy"><figcaption><b>Miso</b><span>Caldo de missô e legumes</span></figcaption></figure>
+  </div>
+</div></section>
+
+<section class="sec card-s" id="cardapio"><div class="wrap">
+  <div class="topo rv"><span class="etq">Cardápio</span><h2 class="h">O que servimos</h2><p>Uma seleção de ramen, petiscos de izakaya e sobremesas para dividir à mesa.</p></div>
+  <div class="cols3">
+    <div class="col rv"><div class="ic"><svg class="i"><use href="#i-bowl"/></svg></div><h3>Ramen <small>ラーメン</small></h3><ul>
+      <li><b>Shoyu ramen</b><span>Caldo claro de shoyu, macarrão fino, ovo marinado e cebolinha.</span></li>
+      <li><b>Tonkotsu ramen</b><span>Caldo encorpado cozido por horas, fatias de porco e nori.</span></li>
+      <li><b>Miso ramen</b><span>Caldo de missô com legumes, milho e cebolinha.</span></li>
+      <li><b>Ramen de legumes</b><span>Caldo leve com cogumelos, legumes e tofu.</span></li></ul></div>
+    <div class="col rv" style="--d:.1s"><div class="ic"><svg class="i"><use href="#i-utensils"/></svg></div><h3>Izakaya <small>居酒屋</small></h3><ul>
+      <li><b>Gyoza</b><span>Pastéis recheados, selados na frigideira, com molho.</span></li>
+      <li><b>Edamame</b><span>Vagem de soja no vapor com sal.</span></li>
+      <li><b>Karaage</b><span>Frango frito crocante com limão.</span></li>
+      <li><b>Yakissoba da casa</b><span>Macarrão salteado com legumes na chapa.</span></li></ul></div>
+    <div class="col rv" style="--d:.2s"><div class="ic"><svg class="i"><use href="#i-fish"/></svg></div><h3>Sushi <small>寿司</small></h3><ul>
+      <li><b>Combinado de sushi</b><span>Seleção de sushis e sashimis do dia.</span></li>
+      <li><b>Uramaki</b><span>Rolinhos com recheios variados.</span></li>
+      <li><b>Mochi</b><span>Sobremesa gelada de arroz glutinoso.</span></li>
+      <li><b>Chás e bebidas</b><span>Chá verde, cervejas e saquê.</span></li></ul></div>
+  </div>
+</div></section>
+
+<section class="sec iza" id="izakaya"><div class="wrap">
+  <article class="bloco rv"><div class="im"><img src="s3-gyoza.jpg" alt="Cestos de bambu com gyoza no vapor" width="1000" height="603" loading="lazy"></div><div class="tx"><div class="ic"><svg class="i"><use href="#i-utensils"/></svg></div><h3>Petiscos para dividir</h3><p>Gyoza, karaage e outros pratos de izakaya para acompanhar uma cerveja gelada e esticar a conversa.</p><a class="btn btn-verm" href="#cardapio">Ver petiscos<svg class="i"><use href="#i-arrow"/></svg></a></div></article>
+  <article class="bloco rv" style="--d:.12s"><div class="im"><img src="s3-sushi2.jpg" alt="Combinado de sushi sobre tábua escura" width="900" height="600" loading="lazy"></div><div class="tx"><div class="ic"><svg class="i"><use href="#i-fish"/></svg></div><h3>Sushi e sashimi</h3><p>Cortes frescos e arroz no ponto, em um combinado para dividir ou pedir individual.</p><a class="btn btn-verm" href="#cardapio">Ver sushi<svg class="i"><use href="#i-arrow"/></svg></a></div></article>
+</div></section>
+
+<section class="onda-s" id="tigela">
+  <svg class="onda" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v62c-90 34-170 38-260 8-96-32-170-36-262-4-84 30-150 34-240 4C590 40 520 30 440 52 352 76 266 78 180 54 120 38 60 36 0 56z"/></svg>
+  <svg class="onda b" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v62c-90 34-170 38-260 8-96-32-170-36-262-4-84 30-150 34-240 4C590 40 520 30 440 52 352 76 266 78 180 54 120 38 60 36 0 56z"/></svg>
+  <div class="wrap">
+    <div class="rv"><span class="etq">A tigela da casa</span><h2 class="h">Quente, intensa e <em>feita para ficar</em></h2><p>Um caldo profundo, macarrão com mordida e coberturas frescas. A nossa especialidade em uma única tigela.</p><a class="btn btn-lar" href="#cardapio">Peça a sua<svg class="i"><use href="#i-arrow"/></svg></a></div>
+    <div class="tig rv" style="--d:.1s"><div class="foto"><img src="s3-tigela.jpg" alt="Tigela de ramen com ovo, macarrão e cebolinha servida com hashi" width="1200" height="1200" loading="lazy"></div></div>
+    <div class="d rv" style="--d:.2s"><span class="etq">Para completar</span><h2 class="h">Sabores do Japão <em>à sua mesa</em></h2><p>Do gyoza ao mochi, tudo para uma refeição completa, num ambiente acolhedor e descontraído.</p><a class="btn btn-fan" href="#visite">Reservar mesa</a></div>
+  </div>
+</section>
+
+<section class="sec visite" id="visite"><div class="wrap">
+  <div class="rv"><span class="etq">Visite-nos</span><h2 class="h">Venha comer<br>com a gente</h2>
+    <div class="hor"><div><span>Terça a quinta</span><span>12h – 15h · 18h – 23h</span></div><div><span>Sexta e sábado</span><span>12h – 15h · 18h – 00h</span></div><div><span>Domingo</span><span>12h – 18h</span></div></div>
+    <div class="ctl"><div><svg class="i"><use href="#i-pin"/></svg>Rua das Camélias, 88 · Liberdade, São Paulo/SP</div><div><svg class="i"><use href="#i-phone"/></svg>(11) 0000-0000</div></div>
+    <a class="btn btn-verm" href="https://www.google.com/maps/search/?api=1&query=Liberdade+S%C3%A3o+Paulo" target="_blank" rel="noopener">Ver no Google Maps<svg class="i"><use href="#i-arrow"/></svg></a></div>
+  <div class="mapa rv" style="--d:.1s"><div><div class="sel" aria-hidden="true">赤</div><p>Akai Ramen-ya<br>Liberdade, São Paulo</p><a class="btn btn-lar" href="https://www.google.com/maps/search/?api=1&query=Liberdade+S%C3%A3o+Paulo" target="_blank" rel="noopener">Como chegar</a></div></div>
+</div></section>
+</main>
+
+<footer class="rod" id="contato"><div class="wrap">
+  <div class="cols">
+    <div><a class="logo" href="#topo"><span class="hanko" aria-hidden="true">赤</span><span><b>Akai Ramen-ya</b><small>ラーメン屋</small></span></a><p>Ramen feito devagar, petiscos de izakaya e um ambiente para ficar à vontade.</p><div class="soc"><a href="#" aria-label="Instagram"><svg class="i"><use href="#i-ig"/></svg></a><a href="#" aria-label="Facebook"><svg class="i"><use href="#i-fb"/></svg></a><a href="#" aria-label="WhatsApp"><svg class="i"><use href="#i-wa"/></svg></a></div></div>
+    <div><h4>Navegação</h4><ul><li><a href="#topo">Início</a></li><li><a href="#sobre">Ramen</a></li><li><a href="#cardapio">Cardápio</a></li><li><a href="#visite">Visite</a></li></ul></div>
+    <div><h4>Cardápio</h4><ul><li><a href="#cardapio">Ramen</a></li><li><a href="#cardapio">Izakaya</a></li><li><a href="#cardapio">Sushi</a></li><li><a href="#cardapio">Sobremesas</a></li></ul></div>
+    <div><h4>Contato</h4><ul><li class="c"><svg class="i"><use href="#i-pin"/></svg>Rua das Camélias, 88<br>Liberdade, São Paulo/SP</li><li class="c"><svg class="i"><use href="#i-phone"/></svg>(11) 0000-0000</li><li class="c"><svg class="i"><use href="#i-mail"/></svg>ola@exemplo.com.br</li></ul></div>
+    <div class="news"><h4>Novidades</h4><ul><li style="line-height:1.5">Receba o cardápio da semana e avisos de eventos.</li></ul><form data-ilustrativo="Formulário ilustrativo — este é um projeto conceito." novalidate><input type="email" placeholder="Seu e-mail" aria-label="Seu e-mail"><button type="submit">Assinar</button></form></div>
+  </div>
+</div>
+<div class="fim"><div class="wrap"><span>© 2026 Akai Ramen-ya — restaurante fictício. Projeto conceito de portfólio.</span><span>Fotos: Unsplash (licença livre)</span></div></div>
+</footer>
+<div class="conceito">Projeto conceito</div>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
